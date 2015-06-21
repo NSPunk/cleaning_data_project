@@ -46,3 +46,5 @@ features_to_delete <- sapply(variable_names, function(name){
 
 data <- data[,features_to_delete]
 
+tidy_data <- aggregate(data[,1:(ncol(data)-2)],by = data[c("Subject","Activity")],FUN = mean)
+write.table(tidy_data,file="tidy_data.txt",row.name=FALSE)
